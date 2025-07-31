@@ -1,89 +1,108 @@
-NXFixCheat
-==========
+# NXFixCheat
 
-NXFixCheat is a simple Nintendo Switch homebrew utility that allows users to easily manage Atmosphère's cheat behavior without editing config files manually.
+A simple Nintendo Switch homebrew tool for easily toggling Atmosphere cheat settings, including auto-enable cheats and remembering cheat states.  
+**NXFixCheat** provides a user-friendly graphical interface to quickly enable or disable cheat options without editing config files manually.
 
-This app was created to fix and toggle two common cheat-related settings in system_settings.ini:
+---
 
-- ✅ dmnt_cheats_enabled_by_default — whether cheats are auto-enabled on game launch
-- ✅ dmnt_always_save_cheat_toggles — whether each cheat's ON/OFF state is remembered between sessions
+## Features
 
-Features
---------
+- **Toggle auto-enable cheats:** Quickly enable or disable default cheat activation (`dmnt_cheats_enabled_by_default`) in `system_settings.ini`.
+- **Toggle remember cheat state:** Set whether Atmosphere should remember the last cheat toggle state (`dmnt_always_save_cheat_toggles`).
+- **Automatic backup:** Backs up your current config file before applying any changes.
+- **Template restoration:** If your config is missing, a template is automatically copied and used.
+- **Simple menu navigation:** Navigate using your controller’s D-Pad and buttons.
+- **Reboot option:** Optionally reboot to Homebrew Menu after applying changes.
 
-- Toggle Auto-Cheat (enable/disable)
-- Toggle Remember Cheat State (save per-cheat toggle)
-- Detects current config and shows status with [✓] marks
-- Simple text-based UI with D-Pad navigation
-- Confirmation prompts before applying any change
-- Designed for use in Atmosphère homebrew environment
+---
 
-Screenshot
-----------
+## How It Works
 
-NXFixCheat Utility
-========================
-> [✓] Disable Auto-Cheat
-> 
-> [ ] Enable Auto-Cheat
-> 
-> [✓] Remember Cheat State
-> 
-> Exit without changes
+NXFixCheat modifies the following file on your SD card:
 
-Use ↑ ↓ to move, A to select
+- `sdmc:/atmosphere/config/system_settings.ini`
 
-Installation
-------------
+If the file is missing, a template is copied from:
 
-1. Build using devkitPro or download the .nro release
-2. Copy nxfixcheat.nro to your Switch SD card under /switch/nxfixcheat/
-3. Launch from the Homebrew Menu (hbmenu)
+- `sdmc:/switch/nxfixcheat/system_settings_template.ini`
 
-Building From Source
---------------------
+A backup of your current config is saved to:
 
-Requirements:
-- devkitPro with devkitA64, libnx, switch-tools
-- make, gcc, etc.
+- `sdmc:/atmosphere/config/system_settings_backup.ini`
 
-Build:
+---
 
-    make clean
-    make
+## Usage
 
-The result will be:
+1. **Copy the NRO**  
+   Place the compiled `.nro` file in your `sdmc:/switch/nxfixcheat/` folder.
 
-    nxfixcheat.nro
+2. **(Optional) Template Config**  
+   Ensure `system_settings_template.ini` exists in `sdmc:/switch/nxfixcheat/` for recovery if your config file is missing.
 
-How It Works
-------------
+3. **Run NXFixCheat**  
+   Launch the application via the Homebrew Menu.
 
-The app checks for /atmosphere/config/system_settings.ini.
+4. **Navigate the menu**  
+   - Use ⬆️/⬇️ to move between options.
+   - Press **A** to select/toggle.
+   - Press **B** to exit.
+   - Press **+** to reboot to HBMenu.
 
-- If it doesn't exist, a default template will be created
-- The app scans for the lines:
-  - dmnt_cheats_enabled_by_default
-  - dmnt_always_save_cheat_toggles
-- Missing lines will be added
-- User can apply changes via menu
+---
 
-Example Config
---------------
+## Building
 
-    [atmosphere]
-    dmnt_cheats_enabled_by_default = u8!0x1
-    dmnt_always_save_cheat_toggles = u8!0x1
+Requires [devkitPro](https://devkitpro.org/) and the Switch homebrew libraries.
 
-Credits
--------
+Typical build instructions:
 
-- Built using devkitPro
-- Developed by jiraiya78
-- Special thanks to the switchbrew and libnx community
+```bash
+make
+```
 
-Disclaimer
-----------
+Copy the resulting `nxfixcheat.nro` to your Switch SD card.
 
-This is a homebrew utility meant for use on modded Nintendo Switch consoles.
-Use responsibly. No warranties are provided. Atmosphère must be installed.
+---
+
+## Menu Overview
+
+- **Toggle Auto-Cheat**  
+  Enable or disable automatic cheat activation for all games.
+- **Toggle Remember Cheat State**  
+  Decide if Atmosphere should save and restore last cheat states.
+- **Exit**  
+  Close the app without rebooting.
+- **Reboot**  
+  Reboot to payload or Homebrew Menu for settings to take effect.
+
+---
+
+## Screenshots
+
+![screenshot](https://github.com/jiraiya78/nxfixcheat/blob/main/screenshot.jpg)
+
+---
+
+## Disclaimer
+
+- Use at your own risk.
+- Modifying system files can cause unexpected behavior.
+- Always keep backups of your configuration files.
+
+---
+
+## License
+
+MIT License  
+(C) 2024 [jiraiya78](https://github.com/jiraiya78)
+
+---
+
+## Links
+
+- [Atmosphere CFW](https://github.com/Atmosphere-NX/Atmosphere)
+- [devkitPro](https://devkitpro.org/)
+- [SwitchBrew Wiki](https://switchbrew.org/)
+
+---
