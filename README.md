@@ -5,6 +5,12 @@ A simple Nintendo Switch homebrew tool for easily toggling Atmosphere cheat sett
 
 ---
 
+## Screenshots
+
+![screenshot](https://github.com/jiraiya78/nxfixcheat/blob/main/screenshot.jpg)
+
+---
+
 ## Features
 
 - **Toggle auto-enable cheats:** Quickly enable or disable default cheat activation (`dmnt_cheats_enabled_by_default`) in `system_settings.ini`.
@@ -75,12 +81,6 @@ Copy the resulting `nxfixcheat.nro` to your Switch SD card.
   Close the app without rebooting.
 - **Reboot**  
   Reboot to payload or Homebrew Menu for settings to take effect.
-
----
-
-## Screenshots
-
-![screenshot](https://github.com/jiraiya78/nxfixcheat/blob/main/screenshot.jpg)
 
 ---
 
